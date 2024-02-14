@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>git - the simple guide - no deep shit!</title>
+    <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/0/normalize.min.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <script>
+        // const promiseOfSomeJsonData = fetch('http://localhost:8080/get/toto').then(r => r.json()).then(data => {
+        const promiseOfSomeJsonData = fetch('TR_WS_BACK_URL/get/example_of_path').then(r => r.json()).then(data => {
+            return data;
+        });
+        window.onload = async () => {
+            let someData = await promiseOfSomeJsonData;
+            console.log(someData)
+            document.getElementById('time').innerHTML = someData.time 
+            document.getElementById('env').innerHTML = someData.environment
+            document.getElementById('path').innerHTML = someData.result
+            document.getElementById('hostname').innerHTML = someData.hostname
+        };
+    </script>
+</head>
+
+<body>
+    <h1>API informations</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Value</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>API time</td>
+            <td id="time"></td>
+            <td>Time returned dynamically by API</td>
+        </tr>
+        <tr>
+            <td>API environment</td>
+            <td id="env"></td></td>
+            <td>Environment variable with which you started the API</td>
+        </tr>
+        <tr>
+            <td>API called path</td>
+            <td id="path"></td>
+            <td>Hard coded value in front which calls backend</td>
+        </tr>
+        <tr>
+            <td>API hostname</td>
+            <td id="hostname"></td>
+            <td>The host on which the API currently run</td>
+        </tr>
+    </table>
+</body>
+
+</html>
