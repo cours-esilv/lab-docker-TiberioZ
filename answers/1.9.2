@@ -1,1 +1,3 @@
-docker run -d -p 5000:5000 -e environment=development tiberiozz/mlops:latest
+docker stop nostalgic_moser
+docker rename nostalgic_moser app
+docker run -d --name app -p 5000:5000 -e environment=development tiberiozz/mlops:latest
