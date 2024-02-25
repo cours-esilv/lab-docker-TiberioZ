@@ -1,0 +1,2 @@
+docker stop docker-front
+docker stop docker-back
